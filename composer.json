@@ -1,0 +1,49 @@
+{
+    "name": "anibalealvarezs/restaurant-menu-package",
+    "description": "Package to add Restaurant Menus MVC",
+    "keywords": [
+        "project",
+        "laravel",
+        "restaurant",
+        "productivity",
+        "menu",
+        "covid",
+        "qr"
+    ],
+    "homepage": "https://anibalalvarez.com",
+    "license": "MIT",
+    "version" : "1.0.11",
+    "type" : "package",
+    "authors": [
+        {
+            "name": "Aníbal Álvarez",
+            "email": "anibalealvarezs@gmail.com",
+            "homepage": "https://anibalalvarez.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : "^7.3",
+        "anibalealvarezs/projectbuilder-package": "^1.0.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "Anibalealvarezs\\RestaurantMenu\\": "src"
+        }
+    },
+    "repositories":[
+        {"type": "composer", "url": "https://repo.packagist.com/anibal-alvarez/"},
+        {"packagist.org": false}
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
