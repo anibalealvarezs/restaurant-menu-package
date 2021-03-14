@@ -2,6 +2,10 @@
 
 ### Instructions for installation:
 
+#### 0. Pre-installation check:
+
+If you already installed [Project Builder](https://github.com/anibalealvarezs/projectbuilder-package) or Jetstream, jump to the [3rd step](https://github.com/anibalealvarezs/restaurant-menu-package#3-require-the-package)
+
 #### 1. Add the following lines to composer.json:
 ```
 "repositories":[
@@ -30,24 +34,24 @@ php artisan config:clear
 ```
 php artisan migrate
 ```
-or, in case of migration failure (NOT FOR RUNNING PROJECTS SINCE DB WILL BE WIPED OUT),
+or, in case of migration failure (***NOT FOR RUNNING PROJECTS SINCE DB WILL BE WIPED OUT***),
 ```
 php artisan migrate:refresh --seeds
 ```
 
-#### 6. Publish Project Builder's Seeders
+#### 7. Publish Project Builder's Seeders
 ```
 
 ```
 
-#### 7. Add "rmstorage" link to "app/filesystems.php"
+#### 8. Add "rmstorage" link to "app/filesystems.php"
 ```
 'links' => [
         public_path('pbstorage') => app_path('vendor/anibalealvarezs/restaurant-menu-package/src/assets'),
     ],
 ```
 
-#### 8. Create default "rmstorage" links
+#### 9. Create default "rmstorage" links
 ```
 php artisan storage:link
 ```
