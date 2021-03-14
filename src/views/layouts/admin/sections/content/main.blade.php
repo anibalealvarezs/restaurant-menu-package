@@ -1,4 +1,4 @@
-@extends('builder::layouts.admin.sections.content')
+@extends('restmenu::layouts.admin.sections.content')
 @section('main')
 <!-- Main content -->
 <section class="content">

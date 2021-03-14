@@ -1,4 +1,4 @@
-@extends('builder::layouts.front.main')
+@extends('restmenu::layouts.front.main')
 @section('content')
 
     @yield('content')

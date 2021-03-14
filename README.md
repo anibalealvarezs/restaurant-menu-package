@@ -25,7 +25,7 @@ or, in case of migration failure (***NOT FOR RUNNING PROJECTS SINCE DB WILL BE W
 php artisan migrate:refresh --seed
 ```
 
-#### 4. Publish Restaurant Menus' and dependencies Seeders
+#### 4. Publish Restaurant Menus' dependencies Seeders
 (***ONLY IF INSTALLING FOR THE VERY FIRST TIME AND PROJECTBUILDER NOT PREVIOUSLY INTALLED SINCE SEEDS COULD GET DUPLICATED***)
 ```
 php artisan db:seed

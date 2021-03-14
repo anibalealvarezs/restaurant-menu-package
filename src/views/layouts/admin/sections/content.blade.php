@@ -1,9 +1,9 @@
-@extends('builder::layouts.admin.main')
+@extends('restmenu::layouts.admin.main')
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 
-    @include('builder::layouts.admin.sections.content.header')
+    @include('restmenu::layouts.admin.sections.content.header')
 
     @yield('main')
 </div>

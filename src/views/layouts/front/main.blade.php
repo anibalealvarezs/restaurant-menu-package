@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>App Name - @yield('title')</title>
 
-    @include('builder::layouts.front.resources.styles')
+    @include('restmenu::layouts.front.resources.styles')
     {{-- @stack('styles') --}}
     @stack('style_file')
     @stack('style_custom')
@@ -15,7 +15,7 @@
 
 @yield('content')
 
-@include('builder::layouts.front.resources.scripts')
+@include('restmenu::layouts.front.resources.scripts')
 {{-- @stack('scripts') --}}
 @stack('script_file')
 @stack('script_custom')
