@@ -12,7 +12,7 @@
     ],
     "homepage": "https://anibalalvarez.com",
     "license": "MIT",
-    "version" : "1.0.8",
+    "version" : "1.0.9",
     "type" : "package",
     "authors": [
         {
@@ -32,6 +32,10 @@
             "Anibalealvarezs\\RestaurantMenu\\": "src"
         }
     },
+    "repositories": [{
+        "type": "composer",
+        "url": "https://satis.anibalalvarez.com"
+    }],
     "extra": {
         "laravel": {
             "providers": [
@@ -42,7 +46,7 @@
                 "Anibalealvarezs\\RestaurantMenu\\Providers\\RmMigrationServiceProvider",
                 "Anibalealvarezs\\RestaurantMenu\\Providers\\RmRouteServiceProvider",
                 "Anibalealvarezs\\RestaurantMenu\\Providers\\RmViewServiceProvider",
-                "Anibalealvarezs\\RestaurantMenu\\Providers\\PbSeederServiceProvider"
+                "Anibalealvarezs\\RestaurantMenu\\Providers\\RmSeederServiceProvider"
             ]
         }
     },
