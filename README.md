@@ -33,7 +33,9 @@ php artisan db:seed
 If not, install these seeds manually
 (Check [Project Builder](https://github.com/anibalealvarezs/projectbuilder-package) 's seeds before these)
 ```
-
+php artisan db:seed --class="Anibalealvarezs\RestaurantMenu\Database\Seeders\RmConfigSeeder"
+php artisan db:seed --class="Anibalealvarezs\RestaurantMenu\Database\Seeders\RmMenuSeeder"
+php artisan db:seed --class="Anibalealvarezs\RestaurantMenu\Database\Seeders\RmMenuItemSeeder"
 ```
 
 ### Useful Commands:

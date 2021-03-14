@@ -6,12 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateMenuItemTable extends Migration
 {
-    use HasTranslations;
-
-    public $translatable = ['name', 'description'];
-
-    protected $table = 'menu_items';
-
     /**
      * Run the migrations.
      *
@@ -21,8 +15,8 @@ class CreateMenuItemTable extends Migration
     {
         Schema::create('menu_items', function (Blueprint $table) {
             $table->id('menu_item_id');
-            $table->integer('menu_id')->nullable(false)->change();
-            $table->string('name', 254)->nullable(false)->change();
+            $table->integer('menu_id')->nullable(false);
+            $table->string('name', 254)->nullable(false);
             $table->string('description', 1024)->nullable();
             $table->float('price', 12, 2)->default(0);
             $table->unsignedTinyInteger('status')->default(1);

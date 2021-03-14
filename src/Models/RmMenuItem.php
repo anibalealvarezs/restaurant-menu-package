@@ -11,7 +11,7 @@ class RmMenuItem extends Model
 
     public $translatable = ['name', 'description'];
 
-    protected $table = 'menus';
+    protected $table = 'menu_items';
 
     /**
      * The attributes that are mass assignable.

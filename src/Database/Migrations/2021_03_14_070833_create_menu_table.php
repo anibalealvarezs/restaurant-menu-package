@@ -3,16 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Spatie\Translatable\HasTranslations;
 
 class CreateMenuTable extends Migration
 {
-    use HasTranslations;
-
-    public $translatable = ['name'];
-
-    protected $table = 'menus';
-
     /**
      * Run the migrations.
      *
@@ -22,7 +15,7 @@ class CreateMenuTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id('menu_id');
-            $table->string('name', 254)->nullable(false)->change();
+            $table->string('name', 254)->nullable(false);
             $table->timestamps();
         });
     }
@@ -34,6 +27,6 @@ class CreateMenuTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menu');
+        Schema::dropIfExists('menus');
     }
 }
