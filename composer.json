@@ -12,7 +12,7 @@
     ],
     "homepage": "https://anibalalvarez.com",
     "license": "MIT",
-    "version" : "1.0.7",
+    "version" : "1.0.8",
     "type" : "package",
     "authors": [
         {
@@ -24,7 +24,7 @@
     ],
     "require": {
         "php" : "^7.3",
-        "anibalealvarezs/projectbuilder-package": "^1.0.15",
+        "anibalealvarezs/projectbuilder-package": "^1.0.16",
         "fideloper/proxy": "^4.2"
     },
     "autoload": {
@@ -32,46 +32,6 @@
             "Anibalealvarezs\\RestaurantMenu\\": "src"
         }
     },
-    "repositories":[
-        {
-            "name": "anibalealvarezs/projectbuilder-package",
-            "version": "1.0.15",
-            "source": {
-                "url": "git@github.com:anibalealvarezs/projectbuilder-package.git",
-                "type": "git",
-                "reference": "master"
-            },
-            "autoload": {
-                "psr-4": {
-                    "Anibalealvarezs\\Projectbuilder\\": "src"
-                }
-            },
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Anibalealvarezs\\Projectbuilder\\Providers\\PbComposerServiceProvider",
-                        "Anibalealvarezs\\Projectbuilder\\Providers\\PbControllerServiceProvider",
-                        "Anibalealvarezs\\Projectbuilder\\Providers\\PbMiddlewareServiceProvider",
-                        "Anibalealvarezs\\Projectbuilder\\Providers\\PbMigrationServiceProvider",
-                        "Anibalealvarezs\\Projectbuilder\\Providers\\PbRouteServiceProvider",
-                        "Anibalealvarezs\\Projectbuilder\\Providers\\PbViewServiceProvider",
-                        "Anibalealvarezs\\Projectbuilder\\Providers\\PbConfigServiceProvider",
-                        "Anibalealvarezs\\Projectbuilder\\Providers\\PbSeederServiceProvider"
-                    ]
-                }
-            },
-            "require": {
-                "php": "^7.3",
-                "laravel/framework": "^8.0",
-                "laravel/jetstream": "^1.6",
-                "laravel/sanctum": "^2.6",
-                "laravel/tinker": "^2.0",
-                "livewire/livewire": "^2.0",
-                "spatie/laravel-permission": "^3.17",
-                "spatie/laravel-translatable": "^4.6"
-            }
-        }
-    ],
     "extra": {
         "laravel": {
             "providers": [
