@@ -12,6 +12,8 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 
 class RmSeederServiceProvider extends ServiceProvider
 {
+    protected $seeds_path = '/../Database/Seeders';
+
     /**
      * Register services.
      *
