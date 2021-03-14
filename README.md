@@ -1,64 +1,39 @@
-# Project Builder
+# Restaurant Menu
 
 ### Instructions for installation:
 
 #### 0. Pre-installation check:
 
-If you already installed [Project Builder](https://github.com/anibalealvarezs/projectbuilder-package) or Jetstream, jump to the [3rd step](https://github.com/anibalealvarezs/restaurant-menu-package#3-require-the-package)
+If [Project Builder](https://github.com/anibalealvarezs/projectbuilder-package) ***WASN'T*** installed previously, go to that repository and follow the installation process before continuing  
 
-#### 1. Add the following lines to composer.json:
-```
-"repositories":[
-    {"type": "composer", "url": "https://repo.packagist.com/anibal-alvarez/"},
-    {"packagist.org": false}
-],
-```
-
-#### 2. If not installed, let's requiere jetstream and install livewire
-```
-composer require laravel/jetstream
-php artisan jetstream:install livewire
-```
-
-#### 3. Require the package
+#### 1. Require the package
 ```
 composer require anibalealvarezs/restaurant-menu-package --no-cache
 ```
 
-#### 5. Clear config cache
+#### 2. Clear config cache
 ```
 php artisan config:clear
 ```
 
-#### 6. Migrate the DB
+#### 3. Migrate the DB
 ```
 php artisan migrate
 ```
 or, in case of migration failure (***NOT FOR RUNNING PROJECTS SINCE DB WILL BE WIPED OUT***),
 ```
-php artisan migrate:refresh --seeds
+php artisan migrate:refresh --seed
 ```
 
-#### 7. Publish Project Builder's Seeders
-Check [Project Builder](https://github.com/anibalealvarezs/projectbuilder-package) 's seeds before these
+#### 4. Publish Restaurant Menus' and dependencies Seeders
+(***ONLY IF INSTALLING FOR THE VERY FIRST TIME AND PROJECTBUILDER NOT PREVIOUSLY INTALLED SINCE SEEDS COULD GET DUPLICATED***)
+```
+php artisan db:seed
+```
+If not, install these seeds manually
+(Check [Project Builder](https://github.com/anibalealvarezs/projectbuilder-package) 's seeds before these)
 ```
 
-```
-
-#### 8. Add "rmstorage" link to "app/filesystems.php"
-```
-'links' => [
-        public_path('pbstorage') => app_path('vendor/anibalealvarezs/restaurant-menu-package/src/assets'),
-    ],
-```
-
-#### 9. Create default "rmstorage" links
-```
-php artisan storage:link
-```
-if "rmstorage" links show error, navigate to "public folder", manually delete the link, and create a new one with the following command:
-```
-ln -s ../vendor/anibalealvarezs/restaurant-menu-package/src/assets rmstorage
 ```
 
 ### Useful Commands:
