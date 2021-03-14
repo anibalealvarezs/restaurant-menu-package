@@ -25,6 +25,7 @@ class RmControllerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->make('Anibalealvarezs\RestaurantMenu\Controllers\Menu\RmMenuController');
+        $this->app->make('Anibalealvarezs\RestaurantMenu\Controllers\Menu\RmMenuItemController');
     }
 }

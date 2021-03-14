@@ -25,11 +25,6 @@ class RmConfigServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->config["filesystems.disks.pb"] = [
-            'driver' => 'local',
-            'root' => __DIR__ . '/../assets',
-            'url' => env('APP_URL').'/rmstorage',
-            'visibility' => 'public',
-        ];
+        //
     }
 }
