@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Facades\View;
 
-class PbMigrationServiceProvider extends ServiceProvider
+class RmComposerServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -15,8 +15,11 @@ class PbMigrationServiceProvider extends ServiceProvider
      */
     public function boot(\Illuminate\Contracts\Http\Kernel $kernel)
     {
-        // Migrations
-        $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
+        // View Composers
+        View::composers([
+            'Anibalealvarezs\RestaurantMenu\ViewComposers\ScriptsComposer' => ['builder::layouts.front.resources.scripts'],
+            'Anibalealvarezs\RestaurantMenu\ViewComposers\StylesComposer' => ['builder::layouts.front.resources.styles']
+        ]);
     }
 
     /**

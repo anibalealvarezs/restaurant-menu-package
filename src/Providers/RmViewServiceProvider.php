@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Facades\View;
 
-class PbViewServiceProvider extends ServiceProvider
+class RmViewServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.

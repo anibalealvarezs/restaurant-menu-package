@@ -40,6 +40,7 @@ php artisan migrate:refresh --seeds
 ```
 
 #### 7. Publish Project Builder's Seeders
+Check [Project Builder](https://github.com/anibalealvarezs/projectbuilder-package) 's seeds before these
 ```
 
 ```

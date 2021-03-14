@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Facades\View;
 
-class PbComposerServiceProvider extends ServiceProvider
+class RmRouteServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -15,11 +15,8 @@ class PbComposerServiceProvider extends ServiceProvider
      */
     public function boot(\Illuminate\Contracts\Http\Kernel $kernel)
     {
-        // View Composers
-        View::composers([
-            'Anibalealvarezs\RestaurantMenu\ViewComposers\ScriptsComposer' => ['builder::layouts.front.resources.scripts'],
-            'Anibalealvarezs\RestaurantMenu\ViewComposers\StylesComposer' => ['builder::layouts.front.resources.styles']
-        ]);
+        // Routes
+        include __DIR__ . '/../routes.php';
     }
 
     /**
