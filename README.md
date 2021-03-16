@@ -1,37 +1,22 @@
-# Project Builder
+# Restaurant Menu
 
 ### Instructions for installation:
 
-#### 1. Add the following lines to composer.json:
+#### 0. Pre-installation check:
+
+If [Project Builder](https://github.com/anibalealvarezs/projectbuilder-package) ***WASN'T*** installed previously, go to that repository and follow the installation process before continuing
+
+#### 1. Require the package
 ```
-"repositories":[
-    {"type": "composer", "url": "https://repo.packagist.com/anibal-alvarez/"},
-    {"packagist.org": false}
-],
+composer require anibalealvarezs/restaurant-menu-package --no-cache
 ```
 
-#### 2. If ***NOT*** installed, let's requiere jetstream and install inertia
-```
-composer require laravel/jetstream
-php artisan jetstream:install inertia --teams
-```
-
-#### 3. Require the package
-```
-composer require anibalealvarezs/projectbuilder-package --no-cache
-```
-
-#### 4. Publish Spatie's Migration
-```
-php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
-```
-
-#### 5. Clear config cache
+#### 2. Clear config cache
 ```
 php artisan config:clear
 ```
 
-#### 6. Migrate the DB
+#### 3. Migrate the DB
 ```
 php artisan migrate
 ```
@@ -47,27 +32,9 @@ php artisan db:seed
 ```
 If not, install these seeds manually
 ```
-php artisan db:seed --class="Anibalealvarezs\Projectbuilder\Database\Seeders\PbSpatieSeeder"
-php artisan db:seed --class="Anibalealvarezs\Projectbuilder\Database\Seeders\PbUsersSeeder"
-php artisan db:seed --class="Anibalealvarezs\Projectbuilder\Database\Seeders\PbTeamSeeder"
-php artisan db:seed --class="Anibalealvarezs\Projectbuilder\Database\Seeders\PbLoggerSeeder"
-php artisan db:seed --class="Anibalealvarezs\Projectbuilder\Database\Seeders\PbConfigSeeder"
-```
-
-#### 8. Add "pbstorage" link to "app/filesystems.php"
-```
-'links' => [
-        public_path('pbstorage') => app_path('vendor/anibalealvarezs/projectbuilder-package/src/assets'),
-    ],
-```
-
-#### 9. Create default "storage" and "pbstorage" links
-```
-php artisan storage:link
-```
-if "pbstorage" links show error, navigate to "public folder", manually delete the link, and create a new one with the following command:
-```
-ln -s ../vendor/anibalealvarezs/projectbuilder-package/src/assets pbstorage
+php artisan db:seed --class="Anibalealvarezs\RestaurantMenu\Database\Seeders\RmConfigSeeder"
+php artisan db:seed --class="Anibalealvarezs\RestaurantMenu\Database\Seeders\RmMenuSeeder"
+php artisan db:seed --class="Anibalealvarezs\RestaurantMenu\Database\Seeders\RmMenuItemSeeder"
 ```
 
 ### Useful Commands:
@@ -86,4 +53,4 @@ php artisan optimize
 
 ### Developing Suite
 
-Clone the <a href="https://github.com/anibalealvarezs/builderdev">BuilderDev repository</a> in order to continue this package developing
+Clone the <a href="https://github.com/anibalealvarezs/restmenu-dev">RestMenuDev repository</a> in order to continue this package developing

@@ -1,6 +1,6 @@
 <?php
 
-namespace Anibalealvarezs\Projectbuilder\Providers;
+namespace Anibalealvarezs\RestaurantMenu\Providers;
 
 use Illuminate\Console\Events\CommandFinished;
 use Illuminate\Support\Facades\Artisan;
@@ -10,7 +10,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
-class PbSeederServiceProvider extends ServiceProvider
+class RmSeederServiceProvider extends ServiceProvider
 {
     protected $seeds_path = '/../Database/Seeders';
 

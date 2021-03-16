@@ -1,12 +1,12 @@
 <?php
 
-namespace Anibalealvarezs\Projectbuilder\Controllers\Logger;
+namespace Anibalealvarezs\RestaurantMenu\Controllers\Menu;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class PbLoggerController extends Controller
+class RmMenuItemController extends Controller
 {
     /**
      * Display a listing of the resource.

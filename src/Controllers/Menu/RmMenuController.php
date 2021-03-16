@@ -1,12 +1,12 @@
 <?php
 
-namespace Anibalealvarezs\Projectbuilder\Controllers\Config;
+namespace Anibalealvarezs\RestaurantMenu\Controllers\Menu;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class PbConfigController extends Controller
+class RmMenuController extends Controller
 {
     /**
      * Display a listing of the resource.

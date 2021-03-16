@@ -1,11 +1,14 @@
 {
-    "name": "anibalealvarezs/projectbuilder-package",
-    "description": "Package to add usefull libraries for new projects",
+    "name": "anibalealvarezs/restaurant-menu-package",
+    "description": "Package to add Restaurant Menus MVC",
     "keywords": [
         "project",
         "laravel",
-        "builder",
-        "productivity"
+        "restaurant",
+        "productivity",
+        "menu",
+        "covid",
+        "qr"
     ],
     "homepage": "https://anibalalvarez.com",
     "license": "MIT",
@@ -20,35 +23,30 @@
         }
     ],
     "require": {
-        "php": "^7.3|^8.0",
-        "fideloper/proxy": "^4.4",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "inertiajs/inertia-laravel": "^0.3.5",
-        "laravel/framework": "^8.12",
-        "laravel/jetstream": "^2.2",
-        "laravel/sanctum": "^2.6",
-        "laravel/tinker": "^2.5",
-        "tightenco/ziggy": "^1.0",
-        "spatie/laravel-permission": "^3.17",
-        "spatie/laravel-translatable": "^4.6"
+        "anibalealvarezs/projectbuilder-package": "^1.1.0"
     },
     "autoload": {
         "psr-4": {
-            "Anibalealvarezs\\Projectbuilder\\": "src"
+            "Anibalealvarezs\\RestaurantMenu\\": "src"
         }
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://satis.anibalalvarez.com"
+        }
+    ],
     "extra": {
         "laravel": {
             "providers": [
-                "Anibalealvarezs\\Projectbuilder\\Providers\\PbComposerServiceProvider",
-                "Anibalealvarezs\\Projectbuilder\\Providers\\PbConfigServiceProvider",
-                "Anibalealvarezs\\Projectbuilder\\Providers\\PbControllerServiceProvider",
-                "Anibalealvarezs\\Projectbuilder\\Providers\\PbMiddlewareServiceProvider",
-                "Anibalealvarezs\\Projectbuilder\\Providers\\PbMigrationServiceProvider",
-                "Anibalealvarezs\\Projectbuilder\\Providers\\PbRouteServiceProvider",
-                "Anibalealvarezs\\Projectbuilder\\Providers\\PbViewServiceProvider",
-                "Anibalealvarezs\\Projectbuilder\\Providers\\PbSeederServiceProvider"
+                "Anibalealvarezs\\RestaurantMenu\\Providers\\RmComposerServiceProvider",
+                "Anibalealvarezs\\RestaurantMenu\\Providers\\RmConfigServiceProvider",
+                "Anibalealvarezs\\RestaurantMenu\\Providers\\RmControllerServiceProvider",
+                "Anibalealvarezs\\RestaurantMenu\\Providers\\RmMiddlewareServiceProvider",
+                "Anibalealvarezs\\RestaurantMenu\\Providers\\RmMigrationServiceProvider",
+                "Anibalealvarezs\\RestaurantMenu\\Providers\\RmRouteServiceProvider",
+                "Anibalealvarezs\\RestaurantMenu\\Providers\\RmViewServiceProvider",
+                "Anibalealvarezs\\RestaurantMenu\\Providers\\RmSeederServiceProvider"
             ]
         }
     },

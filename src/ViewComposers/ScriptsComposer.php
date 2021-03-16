@@ -1,5 +1,5 @@
 <?php
-namespace Anibalealvarezs\Projectbuilder\ViewComposers;
+namespace Anibalealvarezs\RestaurantMenu\ViewComposers;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Storage;

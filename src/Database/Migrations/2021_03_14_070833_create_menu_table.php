@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateConfigTable extends Migration
+class CreateMenuTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateConfigTable extends Migration
      */
     public function up()
     {
-        Schema::create('config', function (Blueprint $table) {
-            $table->id('id_config');
-            $table->string('key', 254)->nullable();
-            $table->text('value');
+        Schema::create('menus', function (Blueprint $table) {
+            $table->id('menu_id');
+            $table->string('name', 254)->nullable(false);
+            $table->timestamps();
         });
     }
 
@@ -27,6 +27,6 @@ class CreateConfigTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('config');
+        Schema::dropIfExists('menus');
     }
 }
