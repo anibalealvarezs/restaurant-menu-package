@@ -17,8 +17,7 @@ class RmComposerServiceProvider extends ServiceProvider
     {
         // View Composers
         View::composers([
-            'Anibalealvarezs\RestaurantMenu\ViewComposers\ScriptsComposer' => ['restmenu::layouts.front.resources.scripts'],
-            'Anibalealvarezs\RestaurantMenu\ViewComposers\StylesComposer' => ['restmenu::layouts.front.resources.styles']
+            // 'Anibalealvarezs\RestaurantMenu\ViewComposers\ScriptsComposer' => ['restmenu::layouts.front.resources.scripts']
         ]);
     }
 
