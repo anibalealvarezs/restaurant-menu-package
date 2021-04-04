@@ -2,6 +2,7 @@
 
 namespace Anibalealvarezs\RestaurantMenu\Providers;
 
+use Anibalealvarezs\RestaurantMenu\Helpers\RmHelpers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Facades\View;
@@ -25,7 +26,8 @@ class RmControllerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->make('Anibalealvarezs\RestaurantMenu\Controllers\Menu\RmMenuController');
-        $this->app->make('Anibalealvarezs\RestaurantMenu\Controllers\Menu\RmMenuItemController');
+        $aeas = new RmHelpers();
+        $this->app->make($aeas->vendor.'\\'.$aeas->package.'\Controllers\Menu\\'.$aeas->prefix.'MenuController');
+        $this->app->make($aeas->vendor.'\\'.$aeas->package.'\Controllers\Menu\\'.$aeas->prefix.'MenuItemController');
     }
 }

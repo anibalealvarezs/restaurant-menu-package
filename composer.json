@@ -39,6 +39,7 @@
     "extra": {
         "laravel": {
             "providers": [
+                "Anibalealvarezs\\RestaurantMenu\\Providers\\RmAppServiceProvider",
                 "Anibalealvarezs\\RestaurantMenu\\Providers\\RmComposerServiceProvider",
                 "Anibalealvarezs\\RestaurantMenu\\Providers\\RmConfigServiceProvider",
                 "Anibalealvarezs\\RestaurantMenu\\Providers\\RmControllerServiceProvider",

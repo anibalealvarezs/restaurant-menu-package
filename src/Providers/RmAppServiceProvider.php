@@ -2,12 +2,9 @@
 
 namespace Anibalealvarezs\RestaurantMenu\Providers;
 
-use Anibalealvarezs\RestaurantMenu\Helpers\RmHelpers;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Routing\UrlGenerator;
-use Illuminate\Support\Facades\View;
 
-class RmMiddlewareServiceProvider extends ServiceProvider
+class RmAppServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
