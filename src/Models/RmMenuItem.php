@@ -2,16 +2,16 @@
 
 namespace Anibalealvarezs\RestaurantMenu\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\Translatable\HasTranslations;
 
-class RmMenuItem extends Model
+class RmMenuItem extends RmBuilder
 {
     use HasTranslations;
 
-    public $translatable = ['name', 'description'];
+    protected $table = 'menu_item';
 
-    protected $table = 'menu_items';
+    public $translatable = ['name', 'description'];
 
     /**
      * The attributes that are mass assignable.
@@ -19,14 +19,14 @@ class RmMenuItem extends Model
      * @var array
      */
     protected $fillable = [
-        'menu_id', 'name', 'description', 'price', 'status', 'allow_duplicates'
+        'menu_section_id', 'name', 'description', 'price', 'status', 'allow_duplicates', 'position'
     ];
 
     /**
      * Get the menu that owns the dish.
      */
-    public function menu()
+    public function menusection(): BelongsTo
     {
-        return $this->belongsTo(RmMenu::class, 'menu_id');
+        return $this->belongsTo(RmMenuSection::class, 'menu_section_id', 'id')->with('menu');
     }
 }

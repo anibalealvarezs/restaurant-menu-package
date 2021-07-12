@@ -2,16 +2,17 @@
 
 namespace Anibalealvarezs\RestaurantMenu\Helpers;
 
-use Anibalealvarezs\Projectbuilder\Helpers\AeasHelpers;
+use Anibalealvarezs\Projectbuilder\Helpers\PbHelpers;
 
-class RmHelpers extends AeasHelpers
+class RmHelpers extends PbHelpers
 {
+    public const RM_PACKAGE = 'RestaurantMenu';
+    public const RM_DIR = 'restaurant-menu-package';
+    public const RM_PREFIX = 'Rm';
+    public const RM_NAME = 'restmenu';
+
     function __construct()
     {
-        $this->vendor = 'Anibalealvarezs';
-        $this->package = 'RestaurantMenu';
-        $this->dir = 'restaurant-menu';
-        $this->prefix = 'Rm';
-        $this->name = 'restmenu';
+        //
     }
 }

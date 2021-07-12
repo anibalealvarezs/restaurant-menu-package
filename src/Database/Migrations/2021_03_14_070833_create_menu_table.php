@@ -13,9 +13,10 @@ class CreateMenuTable extends Migration
      */
     public function up()
     {
-        Schema::create('menus', function (Blueprint $table) {
-            $table->id('menu_id');
-            $table->string('name', 254)->nullable(false);
+        Schema::create('menu', function (Blueprint $table) {
+            $table->id();
+            $table->json('name')->nullable(false);
+            $table->json('description')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateMenuTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menus');
+        Schema::dropIfExists('menu');
     }
 }

@@ -1,0 +1,100 @@
+/* Preloader */
+#circle {background: #6c2216;}
+
+/* menu */
+.brand span {color: #6c2216;}
+.main-nav ul li:hover>ul{background: rgba(163,55,34,0.95); }
+.main-nav ul li a .sub-toggle{ background:rgba(163,55,34,0.95);}
+#mainheader .main-nav ul li ul{background: rgba(163,55,34,0.95);}
+.slicknav_nav {	background: rgba(163,55,34,0.95);}
+.slicknav_nav li ul li a:hover{ background: rgba(163,55,34,0.98);}
+
+h1 {color: #6c2216;}
+p span {color: #6c2216;}
+span a, a{color: #6c2216;}
+.border_bottom {border-bottom: 1px dotted rgba(163,55,34,0.9);}
+
+/* About */
+.days{color: #6c2216;}
+.button {background: rgba(163,55,34,0.95);}
+
+/*  Menu Toggle */
+.toggle-header:hover {color: #6c2216;}
+.price-round{background-color: #6c2216;}
+.toggle-close {background:#b8b8b8 url(../../img/RestaurantMenu/minus1.png) no-repeat 97% center; color: #6c2216;}
+.toggle-header:hover .toggle-open {background:url(../../img/RestaurantMenu/plus-over1.png) no-repeat 97% center;}
+
+
+/* Menu Special */
+#specials .heading{border-bottom: 1px solid rgba(163,55,34,0.9);}
+.specials-round {background-color: #6c2216;}
+
+/* Location */
+.location-phone i{color:#6c2216;}
+
+/* Private Dining */
+.pd_list ul li i{color:#6c2216;}
+
+/* Gallery */
+#slides .cycle-overlay div {	background:rgba(163,55,34,0.8);}
+#slides .prev, #slides .next{background: #6c2216;}
+
+/* Event */
+.left_content p {color: #6c2216;}
+
+/* Reservation */
+#reservation_form .submitBtn {background-color: #6c2216;}
+.reserve_form input:focus, .reserve_form textarea:focus ,input:valid:focus{
+  	/* IE6-9 */
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(163,55,34,0.8);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(163,55,34,0.8);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(163,55,34,0.8);
+}
+
+/* Contact */
+.address i{ color:#6c2216;}
+.phone i{ color:#6c2216;}
+a.mail-text:hover{color: #6c2216;}
+.mail-text i{color:#6c2216;}
+#contact_form .submitBtn {background-color: #6c2216;}
+.cont_form input:focus, .cont_form textarea:focus ,input:valid:focus{
+  	/* IE6-9 */
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(163,55,34,0.8);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(163,55,34,0.8);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(163,55,34,0.8);
+}
+
+/* Special Menu */
+.spmenu1, .spmenu2, .spmenu3, .spmenu4{background: rgba(163,55,34,0.95);}
+.spmenu1:before, .spmenu2:before, .spmenu3:before, .spmenu4:before
+{
+border-top: 17px solid rgba(163,55,34,1);
+border-right: 13px solid transparent;
+border-bottom: 13px solid transparent;
+border-left: 0px solid transparent;
+}
+
+/* lightbox */
+#lightbox .close, #lightbox2 .close, #lightbox3 .close{ background:rgba(163,55,34,0.95);}
+
+/* Cycle Slider */
+
+/* Progress Bar */
+#progress {
+		position: absolute; top: 0; left:0; height: 7px; width: 0px;
+		background: -moz-linear-gradient(left, rgba(163,55,34,0.3) 0%, rgba(163,55,34,0.8) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(163,55,34,0.3)), color-stop(100%,rgba(0,0,0,0.8))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(left, rgba(163,55,34,0.3) 0%,rgba(163,55,34,0.8) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(left, rgba(163,55,34,0.3) 0%,rgba(163,55,34,0.8) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(left, rgba(163,55,34,0.3) 0%,rgba(163,55,34,0.8) 100%); /* IE10+ */
+		background: linear-gradient(to right, rgba(163,55,34,0.3) 0%,rgba(163,55,34,0.8) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d1e1e1e', endColorstr='#cc000000',GradientType=1 ); /* IE6-9 */
+			z-index: 99999;
+		-webkit-border-top-right-radius: 50px;
+		-webkit-border-bottom-right-radius: 50px;
+		-moz-border-radius-topright: 50px;
+		-moz-border-radius-bottomright: 50px;
+		border-top-right-radius: 50px;
+		border-bottom-right-radius: 50px;
+}
+

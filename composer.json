@@ -12,7 +12,7 @@
     ],
     "homepage": "https://anibalalvarez.com",
     "license": "MIT",
-    "version" : "1.1.0",
+    "version" : "1.2.0",
     "type" : "package",
     "authors": [
         {
@@ -23,7 +23,7 @@
         }
     ],
     "require": {
-        "anibalealvarezs/projectbuilder-package": "^1.1.0"
+        "anibalealvarezs/projectbuilder-package": "^1.2.2"
     },
     "autoload": {
         "psr-4": {

@@ -1,0 +1,196 @@
+.menu-inner .brand a img {
+    height:60px;
+}
+
+p span.item-gross,
+p span.item-assignment,
+p span.item-tax {
+    font-family: 'Raleway', sans-serif;
+    float: left;
+    width: 26.7%;
+    font-size: 12px;
+    color: #919191;
+    opacity: 0.8;
+}
+
+p span.item-gross .price-label,
+p span.item-assignment .price-label,
+p span.item-tax .price-label {
+    color: #919191;
+    opacity: 0.7;
+}
+
+p span.item-gross .percent,
+p span.item-assignment .percent,
+p span.item-tax .percent {
+    color: #919191;
+}
+
+p span.item-gross {
+    text-align: right;
+}
+
+p span.item-assignment {
+    text-align: center;
+}
+
+p span.item-tax {
+    text-align: left;
+}
+
+p span.item-gross strong,
+p span.item-assignment strong,
+p span.item-tax strong {
+    font-size: 12px;
+    font-family: 'Oswald';
+}
+
+.title-splider {
+    width: 100%;
+    padding-left: 2%;
+}
+
+.title-splider .left {
+    width: 80%;
+}
+
+.title-splider .right {
+    text-align: left;
+}
+
+.title-splider .right.price-bs {
+    width: 11%;
+}
+
+.title-splider .right.price-usd {
+    width: 9%;
+}
+
+.title-splider .right.price-usd .price-reference {
+    font-weight: 400;
+    color: #6c2216;
+}
+
+.title-splider h4 .price-bs, .title-splider h4 .price-usd {
+    text-transform: none;
+}
+
+@media (max-width: 1200px) {
+    .title-splider .left {
+        width: 75%;
+    }
+
+    .title-splider .right.price-bs {
+        width: 15%;
+    }
+
+    .title-splider .right.price-usd {
+        width: 10%;
+    }
+}
+
+@media (max-width: 991px) {
+    .title-splider .left {
+        width: 69%;
+    }
+
+    .title-splider .right.price-bs {
+        width: 21%;
+    }
+
+    .title-splider .right.price-usd {
+        width: 10%;
+    }
+
+    .title-splider .right.price-usd .price-reference {
+        display: none;
+    }
+}
+
+@media (max-width: 670px) {
+
+    p span.item-gross,
+    p span.item-assignment,
+    p span.item-tax {
+        width: 33.33%;
+    }
+
+    p span.item-gross .percent,
+    p span.item-assignment .percent,
+    p span.item-tax .percent {
+        display: none;
+    }
+}
+
+@media (max-width: 540px) {
+    .title-splider .left {
+        width: 62%;
+    }
+
+    .title-splider .right.price-bs {
+        width: 26%;
+    }
+
+    .menu-inner .brand a img {
+        height:46px;
+    }
+}
+
+@media (max-width: 480px) {
+    h4 {
+        font-size: 13px;
+    }
+
+    .title-splider .left {
+        width: 55%;
+    }
+
+    .title-splider .right.price-bs {
+        width: 35%;
+    }
+
+    p span.item-gross,
+    p span.item-assignment,
+    p span.item-tax {
+        font-size: 10px;
+    }
+
+    p span.item-gross strong,
+    p span.item-assignment strong,
+    p span.item-tax strong {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    h4 {
+        font-size: 12px;
+    }
+
+    .title-splider .left {
+        width: 55%;
+    }
+
+    .title-splider .right.price-bs {
+        width: 35%;
+    }
+
+    p span.item-gross,
+    p span.item-assignment,
+    p span.item-tax {
+        font-size: 9px;
+    }
+
+    p span.item-gross strong,
+    p span.item-assignment strong,
+    p span.item-tax strong {
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 320px) {
+    .menu-inner .brand {
+        padding: 10px 0;
+    }
+}
+

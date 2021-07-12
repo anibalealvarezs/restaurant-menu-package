@@ -2,85 +2,94 @@
 
 namespace Anibalealvarezs\RestaurantMenu\Controllers\Menu;
 
-use Illuminate\Http\Request;
+use Anibalealvarezs\RestaurantMenu\Controllers\RmBuilderController;
+use Anibalealvarezs\RestaurantMenu\Models\RmMenu;
+use Anibalealvarezs\RestaurantMenu\Models\RmMenuSection;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use Inertia\Response as InertiaResponse;
 
-class RmMenuController extends Controller
+class RmMenuController extends RmBuilderController
 {
+    function __construct($crud_perms = false)
+    {
+        // Vars Override
+        $this->key = 'Menu';
+        $this->childKey = 'MenuSection';
+        $this->grandchildKey = 'MenuItem';
+        // Parent construct
+        parent::__construct(true);
+        // Validation Rules
+        $this->validationRules = [
+            'name' => ['required', 'max:190'],
+            'description' => [],
+            'status' => ['required'],
+        ];
+        // Sortable model ?
+        $this->sortable = true;
+        // Sortable model
+        $this->sortingRef = 'menu_id';
+        // Show ID column ?
+        $this->showId = false;
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param null $element
+     * @param bool $multiple
+     * @param string $route
+     * @return void
      */
-    public function index()
+    public function index($element = null, bool $multiple = false, string $route = 'level')
     {
-        //
-    }
+        $model = $this->modelPath::with($this->childNames)->orderBy('name')->get();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+        $this->shares[] = $this->childNames;
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return parent::index($model);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @param null $element
+     * @param bool $multiple
+     * @param string $route
+     * @return InertiaResponse
      */
-    public function show($id)
+    public function show(int $id, $element = null, bool $multiple = false, string $route = 'level'): InertiaResponse
     {
-        //
-    }
+        $model = RmMenu::find($id);
+        $childModels = ([]);
+        if ($model) {
+            $childModels = RmMenuSection::with([$this->grandchildNames, $this->name => function ($query) use ($id) {
+                $query->where('id', $id);
+            }])->where($this->name.'_id', $id)->orderBy('position')->orderBy('name')->get();
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        $this->shares[] = $this->grandchildNames;
+        $this->shares[] = $this->names;
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        $this->allowed = [
+            'create '.$this->childNames => 'create',
+            'update '.$this->childNames => 'update',
+            'delete '.$this->childNames => 'delete',
+        ];
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return parent::index(
+            [
+                'level' => [
+                    'size' => 'single',
+                    'object' => $model
+                ],
+                'child' => [
+                    'size' => 'multiple',
+                    'object' => $childModels
+                ]
+            ],
+            true,
+            'child'
+        );
     }
 }

@@ -2,27 +2,23 @@
 
 namespace Anibalealvarezs\RestaurantMenu\Providers;
 
+use Anibalealvarezs\Projectbuilder\Traits\PbServiceProviderTrait;
 use Anibalealvarezs\RestaurantMenu\Helpers\RmHelpers;
+use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Routing\UrlGenerator;
-use Illuminate\Support\Facades\View;
 
 class RmViewServiceProvider extends ServiceProvider
 {
+    use PbServiceProviderTrait;
+
     /**
      * Bootstrap the application services.
      *
      * @return void
      */
-    public function boot(\Illuminate\Contracts\Http\Kernel $kernel)
+    public function boot(Kernel $kernel)
     {
-        $aeas = new RmHelpers();
-        // Views
-        $views = __DIR__ . '/../../resources/js';
-        $this->loadViewsFrom($views, $aeas->prefix);
-        $this->publishes([
-            __DIR__ . '/../../resources/js' => resource_path('assets/'.$aeas->dir.'/js'),
-        ], $aeas->name.'-components');
+        $this->booter(RmHelpers::RM_NAME, RmHelpers::RM_PACKAGE, RmHelpers::RM_DIR);
     }
 
     /**

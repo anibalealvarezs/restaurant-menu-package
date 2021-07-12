@@ -19,27 +19,32 @@ php artisan config:clear
 #### 3. Migrate the DB
 ```
 php artisan migrate
-```
-or, in case of migration failure (***NOT FOR RUNNING PROJECTS SINCE DB WILL BE WIPED OUT***),
-```
-php artisan migrate:refresh --seed
+php artisan db:seed --class=\\Anibalealvarezs\\RestaurantMenu\\Database\\Seeders\\RmMainSeeder
 ```
 
-#### 4. Publish Project Builder's Seeders
-(***ONLY IF INSTALLING FOR THE VERY FIRST TIME SINCE SEEDS COULD GET DUPLICATED***)
-```
-php artisan db:seed
-```
-If not, install these seeds manually
+#### 4. OPTIONALLY, seed the DB step by step
+These are the default seeders in case you want to run them manually
 ```
 php artisan db:seed --class="Anibalealvarezs\RestaurantMenu\Database\Seeders\RmConfigSeeder"
 php artisan db:seed --class="Anibalealvarezs\RestaurantMenu\Database\Seeders\RmMenuSeeder"
 php artisan db:seed --class="Anibalealvarezs\RestaurantMenu\Database\Seeders\RmMenuItemSeeder"
+php artisan db:seed --class="Anibalealvarezs\RestaurantMenu\Database\Seeders\RmPermissionsSeeder"
+php artisan db:seed --class="Anibalealvarezs\RestaurantMenu\Database\Seeders\RmTeamSeeder"
+php artisan db:seed --class="Anibalealvarezs\RestaurantMenu\Database\Seeders\RmNavigationSeeder"
 ```
 
 ### 5. Publish Vue components and libraries
+Publish all necessary files
 ```
-php artisan vendor:publish --provider="Anibalealvarezs\RestaurantMenu\Providers\RmViewServiceProvider" --tag="restmenu-components"
+php artisan vendor:publish --provider="Anibalealvarezs\RestaurantMenu\Providers\RmViewServiceProvider" --tag="restmenu-views" --force
+```
+or publish them one by one
+```
+php artisan vendor:publish --provider="Anibalealvarezs\RestaurantMenu\Providers\RmViewServiceProvider" --tag="restmenu-components" --force
+php artisan vendor:publish --provider="Anibalealvarezs\RestaurantMenu\Providers\RmViewServiceProvider" --tag="restmenu-js" --force
+php artisan vendor:publish --provider="Anibalealvarezs\RestaurantMenu\Providers\RmViewServiceProvider" --tag="restmenu-css" --force
+php artisan vendor:publish --provider="Anibalealvarezs\RestaurantMenu\Providers\RmViewServiceProvider" --tag="restmenu-blade" --force
+php artisan vendor:publish --provider="Anibalealvarezs\RestaurantMenu\Providers\RmViewServiceProvider" --tag="restmenu-core" --force
 ```
 
 ### 6. Add resources to /webpack.mix.js

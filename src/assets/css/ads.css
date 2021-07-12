@@ -1,0 +1,31 @@
+#bv-ad {
+    position:fixed;
+    bottom:0;
+    width:728px;
+    height:90px;
+    margin-left:calc(50% - 364px);
+    z-index:999;
+}
+
+#bv-ad img {
+    height:100%;
+}
+
+.main {
+    padding-bottom: 90px;
+}
+
+@media (max-width: 728px) {
+    #bv-ad {
+        /* position:fixed;
+        bottom:0;
+        width:100%;
+        margin-left:0px; */
+        height:70px;
+        margin-left:calc(50% - 283px);
+    }
+
+    .main {
+        padding-bottom: 70px;
+    }
+}

@@ -2,85 +2,122 @@
 
 namespace Anibalealvarezs\RestaurantMenu\Controllers\Menu;
 
-use Illuminate\Http\Request;
+use Anibalealvarezs\RestaurantMenu\Controllers\RmBuilderController;
+use Anibalealvarezs\RestaurantMenu\Models\RmMenuItem;
+use Anibalealvarezs\RestaurantMenu\Models\RmMenuSection;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
+use Inertia\Response as InertiaResponse;
 
-class RmMenuItemController extends Controller
+class RmMenuItemController extends RmBuilderController
 {
+    function __construct($crud_perms = false)
+    {
+        // Vars Override
+        $this->key = 'MenuItem';
+        $this->parentKey = 'MenuSection';
+        // Parent construct
+        parent::__construct(true);
+        // Validation Rules
+        $this->validationRules = [
+            'name' => ['required', 'max:190'],
+            'menusection' => ['required'],
+            'description' => [],
+            'status' => ['required'],
+            'price' => [],
+        ];
+        // Model fields name replacing
+        $this->replacers = [
+            'menusection' => 'menu_section_id'
+        ];
+        // Sortable model ?
+        $this->sortable = true;
+        // Sortable model
+        $this->sortingRef = 'menu_section_id';
+        // Show ID column ?
+        $this->showId = false;
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param null $element
+     * @param bool $multiple
+     * @param string $route
+     * @return void
      */
-    public function index()
+    public function index($element = null, bool $multiple = false, string $route = 'level')
     {
-        //
+        return Redirect::back();
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param string $route
+     * @return InertiaResponse
      */
-    public function create()
+    public function create(string $route = 'level'): InertiaResponse
     {
-        //
-    }
+        $this->shares[] = $this->parentNames;
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return parent::create();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @param null $element
+     * @param bool $multiple
+     * @param string $route
+     * @return InertiaResponse
      */
-    public function show($id)
+    public function show(int $id, $element = null, bool $multiple = false, string $route = 'level'): InertiaResponse
     {
-        //
+        $this->shares[] = $this->names;
+
+        return parent::show($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @param null $element
+     * @param bool $multiple
+     * @param string $route
+     * @return InertiaResponse
      */
-    public function edit($id)
+    public function edit(int $id, $element = null, bool $multiple = false, string $route = 'level'): InertiaResponse
     {
-        //
-    }
+        $model = RmMenuItem::with(['menusection'])->find($id);
+        $parentModel = ([]);
+        if ($model) {
+            $parentModel = RmMenuSection::find($model->menusection->id);
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        $this->shares[] = $this->parentNames;
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $this->allowed = [
+            'create '.$this->names => 'create',
+            'update '.$this->names => 'update',
+            'delete '.$this->names => 'delete',
+        ];
+
+        return parent::edit(
+            $id,
+            [
+                'level' => [
+                    'size' => 'single',
+                    'object' => $model
+                ],
+                'parent' => [
+                    'size' => 'single',
+                    'object' => $parentModel
+                ],
+            ],
+            true,
+        );
     }
 }

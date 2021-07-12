@@ -2,6 +2,7 @@
 
 namespace Anibalealvarezs\RestaurantMenu\Providers;
 
+use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\ServiceProvider;
 
 class RmAppServiceProvider extends ServiceProvider
@@ -11,7 +12,7 @@ class RmAppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(\Illuminate\Contracts\Http\Kernel $kernel)
+    public function boot(Kernel $kernel)
     {
         //
     }

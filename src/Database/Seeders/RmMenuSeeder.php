@@ -15,6 +15,8 @@ class RmMenuSeeder extends Seeder
     public function run()
     {
         // Default Menu
-        RmMenu::create(['name' => 'Dummy Menu']);
+        if (RmMenu::count() == 0) {
+            RmMenu::create(['name' => 'Dummy Menu']);
+        }
     }
 }

@@ -13,12 +13,12 @@ class CreateMenuItemTable extends Migration
      */
     public function up()
     {
-        Schema::create('menu_items', function (Blueprint $table) {
-            $table->id('menu_item_id');
-            $table->integer('menu_id')->nullable(false);
-            $table->string('name', 254)->nullable(false);
-            $table->string('description', 1024)->nullable();
-            $table->float('price', 12, 2)->default(0);
+        Schema::create('menu_item', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedInteger('menu_section_id')->nullable(false);
+            $table->json('name')->nullable(false);
+            $table->json('description')->nullable();
+            $table->float('price', 12)->default(0);
             $table->unsignedTinyInteger('status')->default(1);
             $table->boolean('allow_duplicates')->default(true);
             $table->timestamps();
@@ -32,6 +32,6 @@ class CreateMenuItemTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menu_items');
+        Schema::dropIfExists('menu_item');
     }
 }
