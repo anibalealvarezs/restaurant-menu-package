@@ -22,7 +22,7 @@ class RmMenuItemController extends RmBuilderController
             'menusection' => ['required'],
             'description' => [],
             'status' => ['required'],
-            'price' => [],
+            'price' => ['numeric', 'gte:0'],
         ];
         // Model fields name replacing
         $this->replacers = [
@@ -37,7 +37,7 @@ class RmMenuItemController extends RmBuilderController
         // Default values
         $this->defaults = [
             'status' => 1,
-            'price' => 1,
+            'price' => 0.00,
         ];
         // Parent construct
         parent::__construct(true);

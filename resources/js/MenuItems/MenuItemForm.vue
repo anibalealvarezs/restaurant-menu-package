@@ -49,6 +49,7 @@
                     name="price"
                     type="number"
                     step="0.01"
+                    min="0.00"
                     placeholder="0.00"
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                     readonly="true"
@@ -163,7 +164,7 @@ export default {
             description: props.data.description,
             status: (props.data.status ? props.data.status : (props.defaults.hasOwnProperty('status') ? props.defaults.status : 1)),
             position: props.data.position,
-            price: (props.data.price ? props.data.price : (props.defaults.hasOwnProperty('price') ? props.defaults.price : 1)),
+            price: (props.data.price ? props.data.price : (props.defaults.hasOwnProperty('price') ? props.defaults.price : 0.00)),
             menusection: (props.rmmenusection ? props.rmmenusection.id : 0),
             menusection_name: (props.rmmenusection ? props.rmmenusection.name : ''),
         })
