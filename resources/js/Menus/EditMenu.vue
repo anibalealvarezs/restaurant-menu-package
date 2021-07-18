@@ -9,7 +9,7 @@
         <Main>
             <slot>
                 <div class="p-12 sm:px-20 bg-white border-b border-gray-200">
-                    <MenuForm :data="setItem" />
+                    <MenuForm :data="setItem" :defaults="defaults" :required="required" />
                 </div>
             </slot>
         </Main>
@@ -17,26 +17,29 @@
 </template>
 
 <script>
-    import AppLayout from '@/Pages/Projectbuilder/AppLayout'
-    import Main from "@/Pages/Projectbuilder/Main"
     import MenuForm from "@/Pages/RestaurantMenu/Menus/MenuForm"
+    import PbEdit from "Pub/js/Projectbuilder/pbedit"
 
     export default {
+        extends: PbEdit,
         name: "EditMenu",
         props: {
             rmmenu: Object,
-            page: Object
         },
         components: {
             MenuForm,
-            AppLayout,
-            Main
         },
         computed: {
             setItem() {
                 this.rmmenu.item = this.rmmenu.id
                 return this.rmmenu
             },
+        },
+        setup () {
+            const defaults = computed(() => usePage().props.value.shared.defaults)
+            const required = computed(() => usePage().props.value.shared.required)
+
+            return { defaults, required }
         }
     }
 </script>

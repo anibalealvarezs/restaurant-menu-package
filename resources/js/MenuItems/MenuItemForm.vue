@@ -14,8 +14,10 @@
                     type="text"
                     placeholder="Name"
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                    readonly="readonly"
+                    readonly="true"
+                    :required="isRequired('name')"
                     @mouseover="disableReadonly"
+                    @focus="disableReadonly"
                 >
             </div>
             <!-- description -->
@@ -30,8 +32,10 @@
                     type="text"
                     placeholder="Description"
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                    readonly="readonly"
+                    readonly="true"
+                    :required="isRequired('description')"
                     @mouseover="disableReadonly"
+                    @focus="disableReadonly"
                 >
             </div>
             <!-- price -->
@@ -47,8 +51,10 @@
                     step="0.01"
                     placeholder="0.00"
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                    readonly="readonly"
+                    readonly="true"
+                    :required="isRequired('price')"
                     @mouseover="disableReadonly"
+                    @focus="disableReadonly"
                 >
             </div>
             <!-- status -->
@@ -62,6 +68,7 @@
                     name="status"
                     class="appearance-none w-full md:w-1/1 px-4 py-3 mb-3 block rounded bg-gray-200 text-gray-700 border border-gray-200 overflow-hidden leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     placeholder="Select status"
+                    :required="isRequired('status')"
                 >
                     <option value="1">
                         Enabled
@@ -99,6 +106,7 @@
                     :id="'grid-menusection-name-' + keyid"
                     name="menusection"
                     type="hidden"
+                    :required="isRequired('menusection')"
                 >
                 <input
                     v-if="form.menusection"
@@ -106,6 +114,7 @@
                     :id="'grid-menusection-' + keyid"
                     name="menusection"
                     type="hidden"
+                    :required="isRequired('menusection')"
                 >
                 <select
                     v-else
@@ -114,6 +123,7 @@
                     name="menusection"
                     class="appearance-none w-full md:w-1/1 px-4 py-3 mb-3 block rounded bg-gray-200 text-gray-700 border border-gray-200 overflow-hidden leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     placeholder="Select menu section"
+                    :required="isRequired('menusection')"
                 >
                     <option v-for="menusection in menusections" :value="menusection.id">
                         {{ menusection.name }}
@@ -132,45 +142,28 @@
 
 <script>
 import JetDropdownLink from '@/Jetstream/DropdownLink'
-import Button from "@/Jetstream/Button"
 import { reactive } from 'vue'
 import { Inertia } from '@inertiajs/inertia'
 import Swal from "sweetalert2"
+import PbForm from "Pub/js/Projectbuilder/pbform"
 
 export default {
+    extends: PbForm,
     name: "MenuItemForm",
     props: {
-        data: Object,
-        keyid: String,
         rmmenusection: Object,
         menusections: Object,
     },
     components: {
-        Button,
         JetDropdownLink,
-    },
-    data() {
-        return {
-            buttontext: (this.data.item ? "Save" : "Create")
-        }
-    },
-    methods: {
-        disableReadonly(event) {
-            document.getElementById(event.target.id).readOnly = false
-        }
-    },
-    computed: {
-        readonly() {
-            return this.data.hasOwnProperty('item')
-        }
     },
     setup (props) {
         const form = reactive({
             name: props.data.name,
             description: props.data.description,
-            status: props.data.status,
+            status: (props.data.status ? props.data.status : (props.defaults.hasOwnProperty('status') ? props.defaults.status : 1)),
             position: props.data.position,
-            price: props.data.price,
+            price: (props.data.price ? props.data.price : (props.defaults.hasOwnProperty('price') ? props.defaults.price : 1)),
             menusection: (props.rmmenusection ? props.rmmenusection.id : 0),
             menusection_name: (props.rmmenusection ? props.rmmenusection.name : ''),
         })

@@ -16,8 +16,6 @@ class RmMenuController extends RmBuilderController
         $this->key = 'Menu';
         $this->childKey = 'MenuSection';
         $this->grandchildKey = 'MenuItem';
-        // Parent construct
-        parent::__construct(true);
         // Validation Rules
         $this->validationRules = [
             'name' => ['required', 'max:190'],
@@ -30,6 +28,12 @@ class RmMenuController extends RmBuilderController
         $this->sortingRef = 'menu_id';
         // Show ID column ?
         $this->showId = false;
+        // Default values
+        $this->defaults = [
+            'status' => 1,
+        ];
+        // Parent construct
+        parent::__construct(true);
     }
 
     /**

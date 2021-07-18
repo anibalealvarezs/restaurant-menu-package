@@ -9,7 +9,7 @@
         <Main>
             <slot>
                 <div class="p-12 sm:px-20 bg-white border-b border-gray-200">
-                    <MenuForm :data="{}" />
+                    <MenuForm :data="{}" :defaults="defaults" :required="required" />
                 </div>
             </slot>
         </Main>
@@ -17,19 +17,20 @@
 </template>
 
 <script>
-    import AppLayout from '@/Pages/Projectbuilder/AppLayout'
-    import Main from "@/Pages/Projectbuilder/Main"
     import MenuForm from "@/Pages/RestaurantMenu/Menus/MenuForm"
+    import PbCreate from "Pub/js/Projectbuilder/pbcreate"
 
     export default {
+        extends: PbCreate,
         name: "CreateMenu",
-        props: {
-            page: Object
-        },
         components: {
             MenuForm,
-            AppLayout,
-            Main
+        },
+        setup () {
+            const defaults = computed(() => usePage().props.value.shared.defaults)
+            const required = computed(() => usePage().props.value.shared.required)
+
+            return { defaults, required }
         }
     }
 </script>

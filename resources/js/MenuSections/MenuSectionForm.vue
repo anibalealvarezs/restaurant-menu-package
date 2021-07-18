@@ -14,8 +14,10 @@
                     type="text"
                     placeholder="Name"
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                    readonly="readonly"
+                    readonly="true"
+                    :required="isRequired('name')"
                     @mouseover="disableReadonly"
+                    @focus="disableReadonly"
                 >
             </div>
             <!-- description -->
@@ -30,8 +32,10 @@
                     type="text"
                     placeholder="Description"
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                    readonly="readonly"
+                    readonly="true"
+                    :required="isRequired('description')"
                     @mouseover="disableReadonly"
+                    @focus="disableReadonly"
                 >
             </div>
             <!-- status -->
@@ -45,6 +49,7 @@
                     name="status"
                     class="appearance-none w-full md:w-1/1 px-4 py-3 mb-3 block rounded bg-gray-200 text-gray-700 border border-gray-200 overflow-hidden leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     placeholder="Select status"
+                    :required="isRequired('status')"
                 >
                     <option value="1">
                         Enabled
@@ -81,6 +86,7 @@
                         :id="'grid-menu-name-' + keyid"
                         name="menu"
                         type="hidden"
+                        :required="isRequired('menu')"
                     >
                     <input
                         v-if="form.menu"
@@ -88,6 +94,7 @@
                         :id="'grid-menu-' + keyid"
                         name="menu"
                         type="hidden"
+                        :required="isRequired('menu')"
                     >
                     <select
                         v-else
@@ -96,6 +103,7 @@
                         name="menu"
                         class="appearance-none w-full md:w-1/1 px-4 py-3 mb-3 block rounded bg-gray-200 text-gray-700 border border-gray-200 overflow-hidden leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         placeholder="Select menu"
+                        :required="isRequired('menu')"
                     >
                         <option v-for="menu in menus" :value="menu.id">
                             {{ menu.name }}
@@ -115,43 +123,26 @@
 
 <script>
 import JetDropdownLink from '@/Jetstream/DropdownLink'
-import Button from "@/Jetstream/Button"
 import { Inertia } from '@inertiajs/inertia'
 import Swal from "sweetalert2"
 import {reactive} from 'vue'
+import PbForm from "Pub/js/Projectbuilder/pbform"
 
 export default {
+    extends: PbForm,
     name: "MenuSectionForm",
     props: {
-        data: Object,
-        keyid: String,
         rmmenu: Object,
         menus: Object,
     },
     components: {
-        Button,
         JetDropdownLink,
-    },
-    data() {
-        return {
-            buttontext: (this.data.item ? "Save" : "Create")
-        }
-    },
-    methods: {
-        disableReadonly(event) {
-            document.getElementById(event.target.id).readOnly = false
-        }
-    },
-    computed: {
-        readonly() {
-            return this.data.hasOwnProperty('item')
-        },
     },
     setup (props) {
         const form = reactive({
             name: props.data.name,
             description: props.data.description,
-            status: props.data.status,
+            status: (props.data.status ? props.data.status : (props.defaults.hasOwnProperty('status') ? props.defaults.status : 1)),
             position: props.data.position,
             menu: (props.rmmenu ? props.rmmenu.id : 0),
             menu_name: (props.rmmenu ? props.rmmenu.name : ''),

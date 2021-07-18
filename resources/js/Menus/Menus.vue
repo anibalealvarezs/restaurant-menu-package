@@ -19,70 +19,43 @@
                         </Button>
                         <div id="breadcrumb"></div>
                     </div>
-                    <TableMenus :menus="rmmenus" :allowed="allowed" :sort="sort" :showpos="showpos" :showid="showid" :model="model" />
+                    <TableMenus :menus="rmmenus" :allowed="allowed" :sort="sort" :showpos="showpos" :showid="showid" :model="model" :defaults="defaults" :required="required" />
                 </div>
             </slot>
             <div :id="buildHiddenId" class="infinite-hidden">
-                <MenuForm :data="{}" />
+                <MenuForm :data="{}" :defaults="defaults" :required="required" />
             </div>
         </Main>
     </AppLayout>
 </template>
 
 <script>
-    import AppLayout from '@/Pages/Projectbuilder/AppLayout'
     import TableMenus from "@/Pages/RestaurantMenu/Menus/TableMenus"
-    import Button from "@/Jetstream/Button"
-    import Main from "@/Pages/Projectbuilder/Main"
-    import {TableFields as Table} from "Pub/js/Projectbuilder/projectbuilder";
-    import Swal from "sweetalert2";
     import MenuForm from "@/Pages/RestaurantMenu/Menus/MenuForm"
-    import {computed} from "vue";
-    import {usePage} from "@inertiajs/inertia-vue3";
+    import {computed} from "vue"
+    import {usePage} from "@inertiajs/inertia-vue3"
+    import PbIndex from "Pub/js/Projectbuilder/pbindex"
 
     export default {
+        extends: PbIndex,
         name: "Menus",
         props: {
             rmmenus: Object
         },
         components: {
-            Button,
-            AppLayout,
             TableMenus,
-            Main,
             MenuForm
         },
-        data() {
-            return {
-                hiddenid: 0
-            }
-        },
-        methods: {
-            loadForm() {
-                let swalMenu = Table.buildSwalLoadFormConfig({text: "Create", formitem: "menu"})
-                swalMenu['didOpen'] = () => {
-                    Table.appendToSwal(this.hiddenid)
-                }
-                swalMenu['willClose'] = () => {
-                    Table.removeFromSwal(this.hiddenid)
-                }
-                Swal.fire(swalMenu);
-            }
-        },
-        computed: {
-            buildHiddenId() {
-                this.hiddenid = Table.buildHiddenId()
-                return this.hiddenid
-            }
-        },
-        setup (props) {
+        setup () {
             const allowed = computed(() => usePage().props.value.shared.allowed)
             const sort = computed(() => usePage().props.value.shared.sort)
             const showpos = computed(() => usePage().props.value.shared.showpos)
             const showid = computed(() => usePage().props.value.shared.showid)
             const model = computed(() => usePage().props.value.shared.model)
+            const defaults = computed(() => usePage().props.value.shared.defaults)
+            const required = computed(() => usePage().props.value.shared.required)
 
-            return { allowed, sort, model, showpos, showid }
+            return { allowed, sort, model, showpos, showid, defaults, required }
         }
     }
 </script>

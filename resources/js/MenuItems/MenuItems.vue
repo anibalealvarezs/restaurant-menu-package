@@ -31,64 +31,36 @@
                             </NavLink>
                         </div>
                     </div>
-                    <TableMenuItems :rmmenusection="rmmenusection" :menusections="menusections" :menuitems="rmmenuitems" :allowed="allowed" :sort="sort" :showpos="showpos" :showid="showid" :model="model" />
+                    <TableMenuItems :rmmenusection="rmmenusection" :menusections="menusections" :menuitems="rmmenuitems" :allowed="allowed" :sort="sort" :showpos="showpos" :showid="showid" :model="model" :defaults="defaults" :required="required" />
                 </div>
             </slot>
             <div :id="buildHiddenId" class="infinite-hidden">
-                <MenuItemForm :rmmenusection="rmmenusection" :menusections="menusections" :data="{}" />
+                <MenuItemForm :rmmenusection="rmmenusection" :menusections="menusections" :data="{}" :defaults="defaults" :required="required" />
             </div>
         </Main>
     </AppLayout>
 </template>
 
 <script>
-    import AppLayout from '@/Pages/Projectbuilder/AppLayout'
     import TableMenuItems from "@/Pages/RestaurantMenu/MenuItems/TableMenuItems"
-    import Button from "@/Jetstream/Button"
-    import Main from "@/Pages/Projectbuilder/Main"
-    import {TableFields as Table} from "Pub/js/Projectbuilder/projectbuilder";
-    import Swal from "sweetalert2";
     import MenuItemForm from "@/Pages/RestaurantMenu/MenuItems/MenuItemForm"
-    import {computed} from "vue";
-    import {usePage} from "@inertiajs/inertia-vue3";
-    import NavLink from "@/Jetstream/NavLink";
+    import {computed} from "vue"
+    import {usePage} from "@inertiajs/inertia-vue3"
+    import NavLink from "@/Jetstream/NavLink"
+    import PbIndex from "Pub/js/Projectbuilder/pbindex"
 
     export default {
-        name: "MenuItems",
+        extends: PbIndex,
         props: {
             rmmenusection: Object,
             rmmenuitems: Object
         },
         components: {
-            Button,
-            AppLayout,
             TableMenuItems,
-            Main,
             MenuItemForm,
             NavLink,
         },
-        data() {
-            return {
-                hiddenid: 0
-            }
-        },
-        methods: {
-            loadForm() {
-                let swalMenu = Table.buildSwalLoadFormConfig({text: "Create", formitem: "menuitem"})
-                swalMenu['didOpen'] = () => {
-                    Table.appendToSwal(this.hiddenid)
-                }
-                swalMenu['willClose'] = () => {
-                    Table.removeFromSwal(this.hiddenid)
-                }
-                Swal.fire(swalMenu);
-            }
-        },
         computed: {
-            buildHiddenId() {
-                this.hiddenid = Table.buildHiddenId()
-                return this.hiddenid
-            },
             getTitle() {
                 let title = "Section"
                 if (this.rmmenusection) {
@@ -104,16 +76,17 @@
                 return title
             },
         },
-        setup (props) {
-
+        setup () {
             const allowed = computed(() => usePage().props.value.shared.allowed)
-            const menusections = computed(() => usePage().props.value.shared.menusections)
             const sort = computed(() => usePage().props.value.shared.sort)
             const showpos = computed(() => usePage().props.value.shared.showpos)
             const showid = computed(() => usePage().props.value.shared.showid)
             const model = computed(() => usePage().props.value.shared.model)
+            const defaults = computed(() => usePage().props.value.shared.defaults)
+            const required = computed(() => usePage().props.value.shared.required)
+            const menusections = computed(() => usePage().props.value.shared.menusections)
 
-            return { allowed, menusections, sort, model, showpos, showid }
+            return { menusections, allowed, sort, model, showpos, showid, defaults, required }
         }
     }
 </script>

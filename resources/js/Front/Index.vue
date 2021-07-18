@@ -95,11 +95,11 @@ export default {
     mounted() {
         let headScripts = [
             '/js/RestaurantMenu/jquery-1.11.1.min.js',
+        ]
+        let bodyScripts = [
             '/js/RestaurantMenu/jquery-migrate-1.2.1.js',
             '/js/RestaurantMenu/jquery-ui.min.js',
             '/js/RestaurantMenu/modernizr.custom.js',
-        ]
-        let bodyScripts = [
             '/js/RestaurantMenu/bootstrap.min.js',
             '/js/RestaurantMenu/jquery.validate.min.js',
             '/js/RestaurantMenu/bootstrap-datetimepicker.min.js',

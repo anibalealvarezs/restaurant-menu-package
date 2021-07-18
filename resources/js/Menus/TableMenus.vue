@@ -13,38 +13,25 @@
             </Body>
         </slot>
         <div v-if="existsFormButton" :id="buildHiddenId" class="infinite-hidden">
-            <MenuForm :data="data" :keyid="generateRandom" :key="itemFormKey" />
+            <MenuForm :data="data" :keyid="generateRandom" :key="itemFormKey" :defaults="defaults" :required="required" />
         </div>
     </Container>
 </template>
 
 <script>
-import Container from "@/Pages/Projectbuilder/Tables/Container"
-import Header from "@/Pages/Projectbuilder/Tables/Header"
-import Body from "@/Pages/Projectbuilder/Tables/Body"
-import TrHead from "@/Pages/Projectbuilder/Tables/TrHead"
-import TrBody from "@/Pages/Projectbuilder/Tables/TrBody"
 import MenuForm from "@/Pages/RestaurantMenu/Menus/MenuForm"
 import { TableFields as Table } from "Pub/js/Projectbuilder/projectbuilder"
-import Sortable from "sortablejs";
+import Sortable from "sortablejs"
+import PbTable from "Pub/js/Projectbuilder/pbtable"
 
 export default {
+    extends: PbTable,
     name: "TableMenus",
     props: {
         menus: Object,
-        allowed: Array,
-        model: String,
-        sort: Boolean,
-        showpos: Boolean,
-        showid: Boolean,
     },
     components: {
         MenuForm,
-        TrBody,
-        TrHead,
-        Container,
-        Header,
-        Body
     },
     mounted() {
         if (this.sort) {
@@ -120,7 +107,8 @@ export default {
                 method: 'PUT',
                 route: "menus.edit",
                 formitem: "menu",
-                altforuser: {}
+                altforuser: {},
+                allowed: allowed.update,
             },
             "delete": {
                 text: 'Delete',
@@ -128,48 +116,13 @@ export default {
                 method: 'DELETE',
                 route: "menus.destroy",
                 formitem: "menu",
-                altforuser: {}
+                altforuser: {},
+                allowed: allowed.delete,
             }
         })
         let fields = table.fields
         return { fields }
     },
-    data() {
-        return {
-            data: {},
-            itemFormKey: 0
-        }
-    },
-    methods: {
-        onItemClicked(value) {
-            let result = Table.onItemClicked(value, this.data, this.itemFormKey)
-            this.data = result.data
-            this.itemFormKey = result.key
-        },
-        getRowPos(el) {
-            return Table.getRowPos(this.sort, el)
-        },
-        getTablePositions(group) {
-            let sort = [];
-            document.querySelectorAll('#'+this.model+'-table-rows tr').forEach(function(value){
-                if (value.dataset.group == group) {
-                    sort.push(value.dataset.id)
-                }
-            })
-            return sort
-        },
-    },
-    computed: {
-        existsFormButton() {
-            return Table.existsFormButton(this.fields.actions.buttons)
-        },
-        buildHiddenId() {
-            return Table.buildHiddenId()
-        },
-        generateRandom() {
-            return Table.generateRandom()
-        }
-    }
 }
 </script>
 

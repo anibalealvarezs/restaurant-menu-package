@@ -8,9 +8,8 @@
 
         <Main>
             <slot>
-                <!-- {{ menusections }} -->
                 <div class="p-12 sm:px-20 bg-white border-b border-gray-200">
-                    <MenuItemForm :rmmenusection="{}" :menusections="menusections" :data="{}" />
+                    <MenuItemForm :rmmenusection="{}" :menusections="menusections" :data="{}" :defaults="defaults" :required="required" />
                 </div>
             </slot>
         </Main>
@@ -18,28 +17,25 @@
 </template>
 
 <script>
-    import AppLayout from '@/Pages/Projectbuilder/AppLayout'
-    import Main from "@/Pages/Projectbuilder/Main"
     import MenuItemForm from "@/Pages/RestaurantMenu/MenuItems/MenuItemForm"
-    import {computed} from "vue";
-    import {usePage} from "@inertiajs/inertia-vue3";
+    import {computed} from "vue"
+    import {usePage} from "@inertiajs/inertia-vue3"
+    import PbCreate from "Pub/js/Projectbuilder/pbcreate"
 
     export default {
+        extends: PbCreate,
         name: "CreateItem",
-        props: {
-            page: Object
-        },
         components: {
             MenuItemForm,
-            AppLayout,
-            Main
         },
-        setup (props) {
+        setup () {
 
             const allowed = computed(() => usePage().props.value.shared.allowed)
             const menusections = computed(() => usePage().props.value.shared.menusections)
+            const defaults = computed(() => usePage().props.value.shared.defaults)
+            const required = computed(() => usePage().props.value.shared.required)
 
-            return { allowed, menusections }
+            return { allowed, menusections, defaults, required }
         }
     }
 </script>
