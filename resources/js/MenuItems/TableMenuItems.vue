@@ -92,6 +92,7 @@ export default {
                 {},
                 {
                     centered: true,
+                    width: "w-12",
                 },
             )
         }
@@ -101,6 +102,7 @@ export default {
             {},
             {
                 centered: true,
+                width: "w-12",
             },
             {},
             {},
@@ -109,7 +111,7 @@ export default {
         )
         table.pushActions({
             "update": {
-                text: 'Update',
+                text: 'Edit',
                 style: 'secondary',
                 method: 'PUT',
                 route: "menuitems.edit",

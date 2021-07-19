@@ -6,6 +6,9 @@ use Anibalealvarezs\RestaurantMenu\Controllers\RmBuilderController;
 use Anibalealvarezs\RestaurantMenu\Models\RmMenu;
 use Anibalealvarezs\RestaurantMenu\Models\RmMenuSection;
 use App\Http\Requests;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Inertia\Response as InertiaResponse;
 
 class RmMenuController extends RmBuilderController

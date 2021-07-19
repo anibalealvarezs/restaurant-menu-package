@@ -6,6 +6,9 @@ use Anibalealvarezs\RestaurantMenu\Controllers\RmBuilderController;
 use Anibalealvarezs\RestaurantMenu\Models\RmMenuItem;
 use Anibalealvarezs\RestaurantMenu\Models\RmMenuSection;
 use App\Http\Requests;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Response as InertiaResponse;
 
@@ -76,9 +79,9 @@ class RmMenuItemController extends RmBuilderController
      * @param null $element
      * @param bool $multiple
      * @param string $route
-     * @return InertiaResponse
+     * @return Application|RedirectResponse|Redirector|InertiaResponse
      */
-    public function show(int $id, $element = null, bool $multiple = false, string $route = 'level'): InertiaResponse
+    public function show(int $id, $element = null, bool $multiple = false, string $route = 'level')
     {
         $this->shares[] = $this->names;
 

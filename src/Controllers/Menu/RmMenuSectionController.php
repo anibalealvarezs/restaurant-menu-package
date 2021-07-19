@@ -8,6 +8,9 @@ use Anibalealvarezs\RestaurantMenu\Models\RmMenu;
 use Anibalealvarezs\RestaurantMenu\Models\RmMenuItem;
 use Anibalealvarezs\RestaurantMenu\Models\RmMenuSection;
 use App\Http\Requests;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Response as InertiaResponse;
 
