@@ -27,5 +27,6 @@ class RmControllerServiceProvider extends ServiceProvider
     {
         $this->app->make(RmHelpers::PB_VENDOR.'\\'.RmHelpers::RM_PACKAGE.'\Controllers\Menu\\'.RmHelpers::RM_PREFIX.'MenuController');
         $this->app->make(RmHelpers::PB_VENDOR.'\\'.RmHelpers::RM_PACKAGE.'\Controllers\Menu\\'.RmHelpers::RM_PREFIX.'MenuItemController');
+        $this->app->make(RmHelpers::PB_VENDOR.'\\'.RmHelpers::RM_PACKAGE.'\Controllers\Menu\\'.RmHelpers::RM_PREFIX.'MenuSectionController');
     }
 }

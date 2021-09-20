@@ -22,6 +22,22 @@ class RmMenu extends RmBuilder
         'name', 'description', 'status'
     ];
 
+    public function getNameAttribute($value)
+    {
+        if (json_decode($value)) {
+            return json_decode($value)->{app()->getLocale()};
+        }
+        return $value;
+    }
+
+    public function getDescriptionAttribute($value)
+    {
+        if (json_decode($value)) {
+            return json_decode($value)->{app()->getLocale()};
+        }
+        return $value;
+    }
+
     /**
      * Get the items for the menu.
      */

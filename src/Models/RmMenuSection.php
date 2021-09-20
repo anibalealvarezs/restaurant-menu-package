@@ -23,6 +23,22 @@ class RmMenuSection extends RmBuilder
         'menu_id', 'name', 'description', 'status', 'position'
     ];
 
+    public function getNameAttribute($value)
+    {
+        if (json_decode($value)) {
+            return json_decode($value)->{app()->getLocale()};
+        }
+        return $value;
+    }
+
+    public function getDescriptionAttribute($value)
+    {
+        if (json_decode($value)) {
+            return json_decode($value)->{app()->getLocale()};
+        }
+        return $value;
+    }
+
     /**
      * Get the menu that owns the dish.
      */

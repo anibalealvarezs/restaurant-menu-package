@@ -25,6 +25,7 @@ php artisan db:seed --class=\\Anibalealvarezs\\RestaurantMenu\\Database\\Seeders
 #### 4. OPTIONALLY, seed the DB step by step
 These are the default seeders in case you want to run them manually
 ```
+php artisan db:seed --class="Anibalealvarezs\RestaurantMenu\Database\Seeders\RmModuleSeeder"
 php artisan db:seed --class="Anibalealvarezs\RestaurantMenu\Database\Seeders\RmConfigSeeder"
 php artisan db:seed --class="Anibalealvarezs\RestaurantMenu\Database\Seeders\RmMenuSeeder"
 php artisan db:seed --class="Anibalealvarezs\RestaurantMenu\Database\Seeders\RmMenuItemSeeder"
